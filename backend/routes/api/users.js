@@ -48,7 +48,7 @@ router.post('/login', (req, res) => {
     db.User.findOne({email})
     .then(user => {
         if (!user) {
-            res.send(400).json({msg: 'User not found'})
+            res.status(400).json({msg: 'User not found'})
         } else {
             bcrypt.compare(password, user.password)
             .then(isMatch => {
@@ -68,6 +68,15 @@ router.post('/login', (req, res) => {
                 }
             })
         }
+    })
+})
+
+// GET api/user/current (Private)
+router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+    res.json({
+        id: req.user.id,
+        name: req.user.name,
+        email: req.user.email
     })
 })
 
