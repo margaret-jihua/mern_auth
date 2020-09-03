@@ -4,9 +4,14 @@ const cors = require('cors')
 const port = process.env.PORT || 8000
 const passport = require('passport')
 
+// Middleware
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 app.use(cors())
+
+// Passport Middleware
+app.use(passport.initialize())
+require
 
 app.get('/', (req, res) => {
     res.status(200).json({ message: 'Smile, you are being watch by the Backend Team'})
