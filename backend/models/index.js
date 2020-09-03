@@ -1,3 +1,4 @@
+require('dotenv').config()
 const mongoose = require('mongoose')
 const MONGO_URI = process.env.MONGO_URI
 
@@ -10,7 +11,7 @@ mongoose.connect(MONGO_URI, {
 const db = mongoose.connection
 
 db.once('open', () => {
-    console.log((`Connected to MongoDB at ${db.host}:${db.port}`));
+    console.log(`Connected to MongoDB at ${db.host}:${db.port}`);
 })
 
 db.on('error', (error) => {
