@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 import setAuthToken from './utils/setAuthToken'
@@ -8,7 +8,7 @@ import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import Signup from './components/Signup'
 import Login from './components/Login'
-import profile from './components/Profile'
+import Profile from './components/Profile'
 import './App.css';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -59,7 +59,7 @@ function App() {
             render={ (props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser} /> }
           />
           <Route path='/about' component={ About } />
-          <PrivateRoute path="/profile" component={ profile } user={currentUser} />
+          <PrivateRoute path="/profile" component={ Profile } user={currentUser} />
           <Route exact path="/" component={ Welcome } />
         </Switch>
       </div>
