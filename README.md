@@ -1,3 +1,3 @@
 # mern_auth
 
-This a template for auth with frontend react and backend express
+This a template for auth with frontend react, backend express, and mongoDB
