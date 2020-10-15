@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     let token
-    if (!localStorage.getItem('jwToken')) {
+    if (!localStorage.getItem('jwtToken')) {
       setIsAuthenticated(false)
     } else {
       token = jwt_decode(localStorage.getItem('jwtToken'))
@@ -58,8 +58,8 @@ function App() {
             path="/login" 
             render={ (props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser} /> }
           />
-          <Route path='/about' component={ About } />
           <PrivateRoute path="/profile" component={ Profile } user={currentUser} />
+          <Route path='/about' component={ About } />
           <Route exact path="/" component={ Welcome } />
         </Switch>
       </div>
